@@ -1,0 +1,603 @@
+/**
+ * admin.css — Componentes transversais de protótipos
+ *
+ * Este arquivo cresce com os projetos do framework Delivery-GB.
+ * Cada bloco tem cabeçalho indicando origem do projeto e componentes que entrega.
+ *
+ * COMPONENTES DISPONÍVEIS:
+ * - .admin-btn-iniciar-disparo       → CTA verde de ação primária em linha de tabela
+ * - .admin-modal-actions--center     → Modificador para centralizar botões em modal de feedback
+ * - .admin-modal-grande              → Modal customizado com header próprio, body scroll, body com cards
+ * - .admin-form-field                → Wrapper de campo com label, input e mensagem de erro inline
+ * - .admin-banner-aviso              → Banner azul "É só um teste!" com ícone de joinha
+ * - .admin-card-cliente              → Card com 6 campos do cliente + footer de ação
+ * - .admin-banner-erro-card          → Banner de erro local dentro de card (falha de carregamento)
+ * - .admin-feedback-envio            → Footer do card com "SMS enviado!" + countdown
+ * - .admin-feedback-erro-envio       → Footer do card com "Falha ao enviar!" + retry
+ * - .admin-btn-testar                → Botão "Testar mensagem" (azul primário com estado disabled próprio)
+ * - .admin-btn-retry-danger          → Botão "Tentar novamente" em vermelho (estado de erro)
+ *
+ * Origem: Disparo de Teste na Subida de Base (Abril/2026)
+ *
+ * VER TAMBÉM:
+ * - prototype-theme.css   → DS base (não mexer)
+ * - whitelabel-tokens.css → tokens whitelabel (mudam pouco)
+ *
+ * CONVENÇÕES:
+ * - Prefixo .admin-* para sinalizar componente transversal
+ * - Reusar tokens existentes (--crm-*, --gb-*) sempre que possível
+ * - Tokens novos: prefixar com --admin-*
+ * - Cabeçalho de bloco antes de cada componente novo
+ */
+
+/* ========================================================================== */
+/* BOTÃO "INICIAR DISPARO" / CTA verde de ação primária                       */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-btn-iniciar-disparo                                    */
+/* Uso: aplicar junto com .btn-acompanhar do DS quando a ação é o caminho    */
+/*      feliz principal de uma linha de tabela (CTA destaque verde).          */
+/* ========================================================================== */
+
+.admin-btn-iniciar-disparo {
+  background-color: var(--crm-support-success) !important;
+  color: var(--crm-white) !important;
+  border-color: var(--crm-support-success) !important;
+}
+
+.admin-btn-acaodecard {
+  background-color: #4B8DF8;
+  color: var(--crm-white) !important;
+  border-color: 4B8DF8;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.admin-btn-iniciar-disparo:hover {
+  background-color: #429038 !important;
+  border-color: #429038 !important;
+  color: var(--crm-white) !important;
+}
+
+.admin-btn-iniciar-disparo:focus-visible {
+  outline: 2px solid rgba(81, 177, 71, 0.45);
+  outline-offset: 2px;
+}
+
+/* ========================================================================== */
+/* MODIFICADOR: Centralizar botões em modal de feedback                       */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-modal-actions--center                                  */
+/* Uso: adicionar em .jornada-feedback-modal__actions quando o desenho        */
+/*      pedir botões centralizados em vez do default (alinhamento à direita). */
+/* ========================================================================== */
+
+.jornada-feedback-modal__actions.admin-modal-actions--center {
+  justify-content: center;
+}
+
+/* ========================================================================== */
+/* MODAL GRANDE — Modal customizado com header próprio e body com s       */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: ., .__dialog,             */
+/*              .admin-modal-grande__content, .admin-modal-grande__header,    */
+/*              .admin-modal-grande__title, .admin-modal-grande__close,       */
+/*              .admin-modal-grande__body, .admin-modal-grande__divider       */
+/* Uso: estrutura de modal maior que o feedback modal, com formulário e       */
+/*      múltiplos blocos verticais. Diferente do .jornada-feedback-modal      */
+/*      por não ser centrado vertical e ter header próprio.                   */
+/* ========================================================================== */
+
+.admin-modal-grande.modal {
+  z-index: 1060;
+  display: none;
+}
+
+.admin-modal-grande.modal.in {
+  display: block;
+}
+
+.admin-modal-grande__dialog {
+  box-sizing: border-box;
+  max-width: 720px;
+  width: calc(100% - 32px);
+  margin: 28px auto;
+}
+
+.admin-modal-grande__content {
+  overflow: hidden;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+  background-color: var(--crm-white);
+}
+
+.admin-modal-grande__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background-color: var(--crm-gray-50);
+  border-bottom: 1px solid var(--gb-table-border);
+}
+
+.admin-modal-grande__title {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--crm-black);
+}
+
+.admin-modal-grande__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--crm-gray-600);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.admin-modal-grande__close:hover {
+  background-color: var(--crm-gray-100, #f0f0f0);
+  color: var(--crm-black);
+}
+
+.admin-modal-grande__body {
+  padding: 24px;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  background-color: var(--crm-gray-50, #f0f0f0);
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.admin-modal-grande__divider {
+  border: none;
+  border-top: 1px solid var(--gb-table-border);
+  margin: 20px 0;
+}
+
+/* ========================================================================== */
+/* CAMPO DE FORMULÁRIO — Wrapper com label, input e erro inline               */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-form-field, .admin-form-field__label,                  */
+/*              .admin-form-field__input, .admin-form-field__error            */
+/* Uso: campo de formulário com mensagem de erro inline (validação durante    */
+/*      digitação). O .form-control do DS provê o visual base.                */
+/* ========================================================================== */
+
+.admin-form-field {
+  margin-bottom: 16px;
+}
+
+.admin-form-field__label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crm-black);
+}
+
+.admin-form-field__input {
+  max-width: 400px;
+  padding: 16px 16px;
+  border: 1px solid var(--Neutras-grey-300, #DDD);
+  font-size: 14px
+}
+
+.admin-form-field__input.is-invalid {
+  border-color: var(--crm-support-error) !important;
+  box-shadow: 0 0 0 1px var(--crm-support-error) inset;
+}
+
+.admin-form-field__error {
+  margin: 6px 0 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: var(--crm-support-error);
+}
+
+/* ========================================================================== */
+/* BANNER AVISO "É só um teste!" — banner azul informativo com joinha         */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-banner-aviso, .admin-banner-aviso__icon,               */
+/*              .admin-banner-aviso__title, .admin-banner-aviso__text         */
+/* ========================================================================== */
+
+.admin-banner-aviso {
+  display: flex;
+  align-items: flex-center;
+  gap: 16px;
+  padding: 16px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--Suporte-blue-informative, #3CB3DD);
+  border-radius: 8px;
+  background: var(--white, #FFF);
+
+background: var(--white, #FFF);
+}
+
+.admin-banner-aviso__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--crm-primary-interactive, #4b8df8);
+}
+
+.admin-banner-aviso__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.admin-banner-aviso__title {
+  margin: 0 0 4px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--crm-black);
+}
+
+.admin-banner-aviso__text {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--crm-gray-600);
+}
+
+/* ========================================================================== */
+/* CARD DE CLIENTE — Card com 6 campos + footer de ação                       */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-card-cliente, .admin-card-cliente__title,              */
+/*              .admin-card-cliente__content, .admin-card-cliente__grid,      */
+/*              .admin-card-cliente__field, .admin-card-cliente__field-label, */
+/*              .admin-card-cliente__field-value, .admin-card-cliente__footer,*/
+/*              .admin-card-cliente__action                                   */
+/* ========================================================================== */
+
+.compiladodecardsdebase {
+   background-color: #FFFFFF;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Border-gray-light, #DDD);
+}
+  
+
+/* Isso remove a margem de qualquer h3 ou p que esteja dentro do card-content */
+.card-content h3, 
+.card-content p {
+  margin: 0;
+}
+
+.admin-card-cliente__title {
+  margin: 0 0 16px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--crm-black);
+}
+
+.admin-card-cliente__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 16px;
+  margin-bottom: 20px;
+}
+
+.admin-card-cliente__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cards-wrapper {
+  display: flex;       /* Alinha em linha */
+  gap: 24px;          /* Espaço entre os cards */
+  flex-wrap: wrap;    /* Se não couber na tela, ele pula para baixo */
+  align-items: flex-start; /* Alinha os cards pelo topo */
+}
+
+/* Garante que o card não estique demais se o texto for curto */
+.carddenovaacao {
+  display: flex;      /* Para alinhar o ícone ao lado do texto */
+  justify-content: start;
+  align-items: flex-start;
+  gap: 16px;
+  width: 300px;       /* Ou um tamanho que fique bom no seu layout */
+}
+
+.textcontentcard p {
+  margin-bottom: 8px }
+
+.carddenovaacao {
+display: flex;
+padding: 20px;
+align-items: start;
+gap: 8px;
+flex: 1 0 0;
+align-self: stretch;
+border-radius: 8px;
+border: 1px solid #E5E5E5;
+background: var(--Bsicas-base-white, #FFF);
+box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);}
+
+.contentcarddenovaacao {
+  margin: 0;
+}
+
+.icon-card {
+  width: 24px;
+  height: 24px;
+  display: block; /* Garante que ele se comporte bem no layout */
+}
+
+.admin-card-cliente__field-label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--crm-gray-600);
+}
+
+.admin-card-cliente__field-value {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--crm-black);
+}
+
+/* Variação: campo com erro de variável (Estado E) */
+[data-dt-state="E"] [data-dt-card="primeiro"] [data-dt-error-field] {
+  color: var(--crm-support-error);
+}
+
+/* Quando há erro de variável, o conteúdo do valor é trocado pelo texto "Erro de variável".
+   Mas como queremos manter os valores reais visíveis em outros estados, usamos um
+   contêiner texto via JS (alterando textContent). Esse JS está no admin.js. */
+
+.admin-card-cliente__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.admin-card-cliente__action {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* ========================================================================== */
+/* BOTÃO "TESTAR MENSAGEM" — botão primário com estilo disabled específico    */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-btn-testar                                             */
+/* Uso: botão azul primário (.btn-primary do DS) com tratamento mais sutil    */
+/*      do estado disabled (azul-pastel em vez de cinza padrão).              */
+/* ========================================================================== */
+
+.admin-btn-testar:disabled,
+.admin-btn-testar[disabled] {
+  background-color: #b8d3fa !important;
+  color: var(--crm-white) !important;
+  border-color: #b8d3fa !important;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* ========================================================================== */
+/* BANNER ERRO LOCAL EM CARD — Falha de carregamento do cliente (Estado F)   */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-banner-erro-card e elementos internos                  */
+/* ========================================================================== */
+
+.admin-banner-erro-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--crm-support-error);
+  border-radius: 4px;
+  background-color: #fdf3f3;
+}
+
+.admin-banner-erro-card__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--crm-support-error);
+}
+
+.admin-banner-erro-card__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.admin-banner-erro-card__title {
+  margin: 0 0 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--crm-black);
+}
+
+.admin-banner-erro-card__text {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--crm-gray-600);
+}
+
+.admin-banner-erro-card__action {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+/* ========================================================================== */
+/* FEEDBACK DE ENVIO — "SMS enviado!" + countdown de Reenviar (Estado D)     */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-feedback-envio                                         */
+/* ========================================================================== */
+
+.admin-feedback-envio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.admin-feedback-envio__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crm-support-success);
+}
+
+.admin-feedback-envio__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--crm-support-success);
+}
+
+.admin-feedback-envio__resend {
+  background-color: #b8d3fa !important;
+  color: var(--crm-white) !important;
+  border-color: #b8d3fa !important;
+  cursor: not-allowed;
+}
+
+.admin-feedback-envio__resend:not(:disabled) {
+  background-color: var(--crm-primary-interactive, #4b8df8) !important;
+  border-color: var(--crm-primary-interactive, #4b8df8) !important;
+  cursor: pointer;
+}
+
+/* ========================================================================== */
+/* FEEDBACK DE FALHA DE ENVIO — "Falha ao enviar!" + Retry (Estado G)        */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Componentes: .admin-feedback-erro-envio, .admin-btn-retry-danger           */
+/* ========================================================================== */
+
+.admin-feedback-erro-envio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.admin-feedback-erro-envio__msg {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-feedback-erro-envio__title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--crm-support-error);
+}
+
+.admin-feedback-erro-envio__text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #c14848;
+}
+
+.admin-btn-retry-danger {
+  background-color: var(--crm-support-error) !important;
+  color: var(--crm-white) !important;
+  border-color: var(--crm-support-error) !important;
+}
+
+.admin-btn-retry-danger:hover {
+  background-color: #b81d1d !important;
+  border-color: #b81d1d !important;
+  color: var(--crm-white) !important;
+}
+
+/* ========================================================================== */
+/* CONTROLE DE ESTADO DO MODAL GRANDE                                         */
+/* Origem: Disparo de Teste na Subida de Base (Abril/2026)                    */
+/* Como funciona: o atributo data-dt-state no modal define qual estado A-G   */
+/* está ativo. Cada estado mostra/esconde elementos conforme a regra abaixo. */
+/* ========================================================================== */
+
+/* Por padrão, alguns blocos ficam escondidos */
+[data-dt-only] {
+  display: none;
+}
+
+/* Estado A — Default (input vazio, cards com dados, botão Testar disabled) */
+/* Estado B — Telefone preenchido válido (botões Testar habilitados) */
+/* Estado C — Telefone com formato inválido (mensagem de erro inline) */
+/* Estados A, B, C: mostrar o conteúdo padrão dos cards */
+[data-dt-state="A"] [data-dt-only="card-default-action"],
+[data-dt-state="B"] [data-dt-only="card-default-action"],
+[data-dt-state="C"] [data-dt-only="card-default-action"],
+[data-dt-state="E"] [data-dt-only="card-default-action"] {
+  display: flex;
+}
+
+[data-dt-state="A"] [data-dt-only="card-content"],
+[data-dt-state="B"] [data-dt-only="card-content"],
+[data-dt-state="C"] [data-dt-only="card-content"],
+[data-dt-state="D"] [data-dt-only="card-content"],
+[data-dt-state="E"] [data-dt-only="card-content"],
+[data-dt-state="G"] [data-dt-only="card-content"] {
+  display: block;
+}
+
+/* Estado D — Pós-envio (Card 1 mostra "SMS enviado!" + countdown) */
+[data-dt-state="D"] [data-dt-card="primeiro"] [data-dt-only="card-sent"] {
+  display: flex;
+}
+
+/* Estado F — Falha de carregamento do Card 1 (banner local + Card 2 funcional) */
+[data-dt-state="F"] [data-dt-card="primeiro"] [data-dt-only="card-loading-error"] {
+  display: flex;
+}
+
+/* No Estado F, o conteúdo padrão do Card 1 some */
+[data-dt-state="F"] [data-dt-card="primeiro"] [data-dt-only="card-content"] {
+  display: none;
+}
+
+/* Card 2 sempre mostra conteúdo nos estados em que o modal está aberto, exceto se isolado */
+[data-dt-state] [data-dt-card="ultimo"] [data-dt-only="card-content"] {
+  display: block;
+}
+
+/* Estado G — Falha de envio do Card 1 (banner vermelho no footer) */
+[data-dt-state="G"] [data-dt-card="primeiro"] [data-dt-only="card-send-error"] {
+  display: flex;
+}
+
+/* No Estado G, o botão Testar do Card 1 some (substituído pelo banner) */
+[data-dt-state="G"] [data-dt-card="primeiro"] [data-dt-only="card-default-action"] {
+  display: none;
+}
+
+.titleandsub h2,
+a {
+  margin-bottom: 0px;
+  gap: 8px;
+}

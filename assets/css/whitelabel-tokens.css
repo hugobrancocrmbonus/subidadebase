@@ -1,0 +1,452 @@
+/**
+ * Whitelabel / jornada demo — apenas acrescentos (texto, espaçamentos leves).
+ * O visual dos componentes vem de assets/css/prototype-theme.css (igual ao Admin - Github).
+ *
+ * Manter este ficheiro mínimo: se duplicar layout ou cores aqui, podes desalinhá-lo do protótipo.
+ */
+
+:root {
+  --wl-accent: #2563eb;
+  --wl-accent-hover: #1d4ed8;
+  /* Fundo da coluna da sidebar (protótipo: --crm-gray-800 / #333) */
+  --gb-sidebar-bg: #3d3d3d;
+  /* Sidebar: mesma altura para nível 1 e submenu; rótulos centrados no eixo Y (flex align-items: center no tema) */
+  --gb-menu-item-height: 41px;
+  --gb-submenu-item-height: 41px;
+}
+
+/*
+ * Detalhes (exemplo-detalhes): o id #jornada-detalhes-content não existe no prototype-theme.css.
+ * Sem estas regras a coluna principal não participa do flex de .page-container e o layout “parte”.
+ * Espelha #brand-edit-content / #design-system-detail-content.
+ */
+#jornada-detalhes-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gb-content-bg);
+}
+
+#jornada-detalhes-content .page-content {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: var(--gb-page-content-min-height);
+  padding: var(--gb-page-content-padding-top) var(--gb-page-content-padding-x)
+    var(--gb-page-content-padding-bottom);
+  color: var(--gb-input-color);
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.jornada-page-subtitle {
+  margin: 0 0 20px;
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--crm-gray-600);
+}
+
+.jornada-section-desc {
+  margin: -8px 0 16px;
+  max-width: 720px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--crm-gray-600);
+}
+
+.jornada-empty-main {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-height: 280px;
+  margin: 0;
+  padding: 48px 24px;
+  border: 1px dashed var(--gb-table-border);
+  border-radius: 4px;
+  background: var(--gb-content-bg);
+  color: var(--crm-gray-600);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Kebab / dropdown: o .content-panel do tema usa overflow:hidden e cortava o menu */
+#segmentation-list-content .content-panel,
+#jornada-crud-content .content-panel {
+  overflow: visible;
+}
+
+/* scroll horizontal da grelha não pode cortar o dropdown na vertical */
+#segmentation-list-content .content-panel__body,
+#jornada-crud-content .content-panel__body {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+#segmentation-list-content .action-dropdown-menu,
+#jornada-crud-content .action-dropdown-menu {
+  z-index: 5000;
+}
+
+#segmentation-list-content #segmentationDataTable_wrapper {
+  overflow: visible;
+}
+
+/* Coluna «Ação»: largura mínima (truque 1%) + alinhamento à direita — evita vão largo à direita do kebab */
+.data-table thead th:last-child,
+.data-table tbody td:last-child {
+  width: 1%;
+  text-align: right;
+  vertical-align: middle;
+}
+
+/* Rodapé da tabela + paginação (jornada demo) */
+.content-panel__footer.jornada-table-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  padding: 12px 16px;
+  background: var(--crm-gray-50);
+  border-top: 1px solid var(--gb-table-border);
+  font-size: 13px;
+  color: var(--crm-gray-600);
+}
+
+.jornada-pagination-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.jornada-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jornada-pagination li {
+  margin: 0;
+  padding: 0;
+}
+
+.jornada-pagination a,
+.jornada-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--gb-table-border);
+  border-radius: 2px;
+  background: var(--crm-white);
+  color: var(--gb-card-text);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.jornada-pagination li.is-active a,
+.jornada-pagination li.is-active span {
+  background: var(--gb-btn-default-bg);
+  color: var(--gb-btn-default-color);
+  border-color: var(--gb-table-border);
+  font-weight: 600;
+}
+
+.jornada-pagination a:hover:not([aria-disabled="true"]) {
+  background: var(--crm-gray-50);
+}
+
+.jornada-pagination a[aria-disabled="true"],
+.jornada-pagination span[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Sexto estado neutro (não existia no tema base) */
+.status-pill--grey {
+  --pill-bg: #ececec;
+  --pill-fg: #555555;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Stepper horizontal — formulários multi-etapa (ex.: exemplo-formulario-steps) */
+/* -------------------------------------------------------------------------- */
+
+.jornada-form-stepper {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.jornada-form-stepper__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  row-gap: 12px;
+}
+
+.jornada-form-stepper__step {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.jornada-form-stepper__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.jornada-form-stepper__indicator {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.jornada-form-stepper__check {
+  display: block;
+  color: var(--crm-white);
+}
+
+.jornada-form-stepper__step--complete .jornada-form-stepper__indicator {
+  background-color: var(--crm-support-success);
+  color: var(--crm-white);
+  border: none;
+}
+
+.jornada-form-stepper__step--active .jornada-form-stepper__indicator {
+  background-color: var(--gb-btn-primary-bg);
+  color: var(--crm-white);
+  border: 1px solid transparent;
+}
+
+.jornada-form-stepper__step--pending .jornada-form-stepper__indicator {
+  background-color: transparent;
+  color: var(--crm-gray-600);
+  border: 1px solid var(--crm-gray-300);
+}
+
+.jornada-form-stepper__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.jornada-form-stepper__title {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--crm-black);
+}
+
+.jornada-form-stepper__description {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--crm-gray-600);
+}
+
+.jornada-form-stepper__step--pending .jornada-form-stepper__title,
+.jornada-form-stepper__step--pending .jornada-form-stepper__description {
+  color: var(--crm-gray-500);
+}
+
+.jornada-form-stepper__connector {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+  margin-right: 8px;
+  color: var(--crm-gray-300);
+}
+
+.jornada-form-stepper__step:last-child .jornada-form-stepper__connector {
+  display: none;
+}
+
+/* Rodapé multi-step: grupo alinhado à direita (como o tema); primário continua o último no DOM (à direita) */
+#segmentation-add-content .page-content #SegmentationForm .form-actions.jornada-form-step-actions {
+  justify-content: flex-end;
+}
+
+.jornada-form-step-actions .jornada-form-step-actions__back[hidden],
+.jornada-form-step-actions .jornada-form-step-actions__continue[hidden],
+.jornada-form-step-actions .jornada-form-step-actions__save[hidden] {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Modal de feedback (sucesso / atenção / erro) — conteúdo centrado, máx. 620px */
+/* -------------------------------------------------------------------------- */
+
+.jornada-feedback-modal.modal {
+  z-index: 1060;
+}
+
+.jornada-feedback-modal .modal-dialog {
+  box-sizing: border-box;
+  max-width: 620px;
+  width: calc(100% - 32px);
+  margin: 28px auto;
+}
+
+.jornada-feedback-modal .modal-content {
+  overflow: hidden;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+}
+
+.jornada-feedback-modal__inner {
+  box-sizing: border-box;
+  padding: 40px;
+  text-align: center;
+}
+
+.jornada-feedback-modal__icon {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  color: var(--crm-white);
+}
+
+.jornada-feedback-modal__icon svg {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+.jornada-feedback-modal__icon--success {
+  background-color: var(--crm-support-success);
+}
+
+.jornada-feedback-modal__icon--warning {
+  background-color: var(--crm-support-alert);
+}
+
+.jornada-feedback-modal__icon--error {
+  background-color: var(--crm-support-error);
+}
+
+.jornada-feedback-modal__title {
+  margin: 32px 0 0;
+  padding: 0;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--crm-black);
+}
+
+.jornada-feedback-modal__text {
+  margin: 16px 0 0;
+  padding: 0;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--crm-gray-600);
+}
+
+/* Até 3 botões: primário (azul) sempre o último no DOM (à direita com flex-end) */
+.jornada-feedback-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+#jornada-feedback-backdrop.modal-backdrop {
+  z-index: 1055;
+}
+
+/* Modais na raiz do body (fora de .page-content): .form-control / inputs do DS só tinham regras sob .page-content */
+.modal.fade,
+.modal.fade .modal-content,
+.modal.fade .modal-content .btn,
+.modal.fade .modal-content input,
+.modal.fade .modal-content select,
+.modal.fade .modal-content textarea,
+.modal.fade .modal-content label {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Sidebar: com subitem ativo, o link do menu pai fica #E02222 (sobrepõe o cinza do tema) */
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle {
+  background-color: #e02222;
+  color: var(--crm-white);
+}
+
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle:hover,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle:hover {
+  background-color: #c41e1e;
+  color: var(--crm-white);
+}
+
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle:focus-visible,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle:focus-visible {
+  background-color: #e02222;
+  color: var(--crm-white);
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: -2px;
+}
+
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle > .menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle > i.menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle > .submenu-arrow,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle > .menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle > i.menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle > .submenu-arrow {
+  color: var(--crm-white);
+}
+
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle:hover > .menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle:hover > i.menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li.active) > a.nav-toggle:hover > .submenu-arrow,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle:hover > .menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle:hover > i.menu-item-icon,
+.page-sidebar-menu > li.start:has(> ul.sub-menu > li > a.active) > a.nav-toggle:hover > .submenu-arrow {
+  color: var(--crm-white);
+}

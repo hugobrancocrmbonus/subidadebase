@@ -1,0 +1,597 @@
+/* Validação pré-disparo — modal standalone */
+
+:root {
+      --admin-modal-title: #212121;
+      --admin-modal-body: #3d3d3d;
+      --admin-modal-card-title: #333333;
+      --admin-modal-stroke: #dddddd;
+      --admin-primary: #4d90fe;
+      --admin-primary-shadow: rgba(77, 144, 254, 0.15);
+      --admin-primary-pressed: rgba(77, 144, 254, 0.2);
+      --admin-var-blue: #4d90fe;
+      --admin-success: #34a853;
+      --admin-cards-tint: #ececec;
+      --admin-btn-disabled-stroke: #eaeaea;
+      --admin-btn-disabled-fg: #9ca3af;
+      --admin-btn-enabled-bg: #f1f4fa;
+      --admin-btn-enabled-bg-hover: #e5ebf7;
+      --admin-footer-secondary-bg: #ececec;
+      --admin-footer-secondary-text: #333333;
+      --admin-overlay: rgba(33, 33, 33, 0.45);
+    }
+
+    body.modal-validacao-pre-disparo-standalone {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      background: #c8c8c8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* —— Shell do modal (header + body + footer = uma peça com sombra) —— */
+    .admin-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: var(--admin-overlay);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 10050;
+      box-sizing: border-box;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .admin-modal-backdrop *,
+    .admin-modal-backdrop *::before,
+    .admin-modal-backdrop *::after {
+      box-sizing: border-box;
+    }
+
+    .admin-modal-shell {
+      width: 100%;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 12px 48px rgba(33, 33, 33, 0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: min(92vh, 900px);
+    }
+
+    /* —— Header —— */
+    .admin-modal-header {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 32px;
+      background: #fff;
+      border-bottom: 1px solid var(--admin-modal-stroke);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .admin-modal-header__title {
+      margin: 0;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: 0;
+      color: var(--admin-modal-title);
+      flex: 0 1 auto;
+    }
+
+    .admin-modal-header__close {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: transparent;
+      color: var(--admin-modal-title);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admin-modal-header__close:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .admin-modal-header__close:focus-visible {
+      outline: 2px solid var(--admin-primary);
+      outline-offset: 2px;
+    }
+
+    /* —— Body —— */
+    .admin-modal-body {
+      flex: 1 1 auto;
+      min-height: 616px;
+      overflow-y: auto;
+      padding: 16px 32px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* —— Footer —— */
+    .admin-modal-footer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 32px;
+      background: #fff;
+      border-top: 1px solid var(--admin-modal-stroke);
+      border-radius: 0 0 8px 8px;
+    }
+
+    .admin-modal-footer[data-step="1"] .footer--step2,
+    .admin-modal-footer[data-step="1"] .footer--step3 {
+      display: none;
+    }
+    .admin-modal-footer[data-step="2"] .footer--step1,
+    .admin-modal-footer[data-step="2"] .footer--step3 {
+      display: none;
+    }
+    .admin-modal-footer[data-step="3"] .footer--step1,
+    .admin-modal-footer[data-step="3"] .footer--step2 {
+      display: none;
+    }
+
+    .admin-modal-footer__group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      width: 100%;
+    }
+
+    /* —— Botões de rodapé —— */
+    .admin-btn {
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 1.25;
+      padding: 10px 20px;
+      border-radius: 0px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+    }
+
+    .admin-btn:focus-visible {
+      outline: 2px solid var(--admin-primary);
+      outline-offset: 2px;
+    }
+
+    .admin-btn--secondary {
+      background: var(--admin-footer-secondary-bg);
+      color: var(--admin-footer-secondary-text);
+    }
+
+    .admin-btn--secondary:hover {
+      filter: brightness(0.97);
+    }
+
+    .admin-btn--primary {
+      background: var(--admin-primary);
+      color: #fff;
+    }
+
+    .admin-btn--primary:hover {
+      filter: brightness(0.95);
+    }
+
+    .admin-btn--success {
+      background: var(--admin-success);
+      color: #fff;
+    }
+
+    .admin-btn--success:hover {
+      filter: brightness(0.95);
+    }
+
+    .admin-btn--success:focus-visible {
+      outline-color: var(--admin-success);
+    }
+
+    /* —— Stepper —— */
+    .admin-stepper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      width: auto;
+      margin: 0 auto 8px;
+    }
+
+    .admin-stepper__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+
+    .admin-stepper__item:not(:last-child)::after {
+      content: none;
+    }
+
+    .admin-stepper__badge {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      border: 2px solid var(--admin-modal-stroke);
+      background: #fff;
+      color: #9e9e9e;
+    }
+
+    .admin-stepper__item.is-done .admin-stepper__badge {
+      background: var(--admin-success);
+      border-color: var(--admin-success);
+      color: #fff;
+    }
+
+    .admin-stepper__item.is-active .admin-stepper__badge {
+      background: var(--admin-primary);
+      border-color: var(--admin-primary);
+      color: #fff;
+    }
+
+    .admin-stepper__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--admin-modal-card-title);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .admin-stepper__item.is-active .admin-stepper__label {
+      color: var(--admin-primary);
+    }
+
+    .admin-stepper__item.is-done .admin-stepper__label {
+      color: var(--admin-modal-body);
+    }
+
+    /* —— Conteúdo centrado (passos 1 e 3) —— */
+    .admin-modal-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+      width: 100%;
+      flex: 1 1 auto;
+      justify-content: center;
+      padding: 8px 0 16px;
+    }
+
+    .admin-modal-hero__illu {
+      width: 194px;
+      height: 164.1px;
+      flex-shrink: 0;
+    }
+
+    .admin-modal-hero__illu svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .admin-modal-hero__illu img.admin-modal-hero__illu-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Passo 1: um único img — display aqui (evita conflitar com passo 3) */
+    .admin-modal-hero__illu:not(.admin-modal-hero__illu--step3) img.admin-modal-hero__illu-img {
+      display: block;
+    }
+
+    /* Passo 3: só um SVG visível por cenário (regra genérica img não pode forçar display:block nas duas) */
+    .admin-modal-backdrop .admin-modal-hero__illu--step3 img.admin-modal-hero__illu-img--step3-feliz,
+    .admin-modal-backdrop .admin-modal-hero__illu--step3 img.admin-modal-hero__illu-img--step3-erro {
+      display: none;
+    }
+
+    .admin-modal-backdrop[data-vpd-scenario="feliz"] .admin-modal-hero__illu--step3 img.admin-modal-hero__illu-img--step3-feliz {
+      display: block;
+    }
+
+    .admin-modal-backdrop[data-vpd-scenario="erro"] .admin-modal-hero__illu--step3 img.admin-modal-hero__illu-img--step3-erro {
+      display: block;
+    }
+
+    .admin-modal-hero__text {
+      width: 100%;
+      max-width: 462px;
+      margin-top: 16px;
+    }
+
+    .admin-modal-hero__title {
+      margin: 0;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: 0;
+      color: #000;
+    }
+
+    .admin-modal-hero__desc {
+      margin: 8px 0 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: 0;
+      color: var(--admin-modal-body);
+    }
+
+    /* —— Passo 2: formulário —— */
+    .admin-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .admin-field__label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .admin-field__input {
+      width: 100%;
+      max-width: 360px;
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--admin-modal-stroke);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .admin-field__input:focus {
+      outline: none;
+      border-color: var(--admin-primary);
+      box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.2);
+    }
+
+    .admin-test-cards-wrap {
+      width: 100%;
+      background: var(--admin-cards-tint);
+      border-radius: 16px;
+      padding: 8px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .admin-test-card {
+      flex: 1 1 280px;
+      min-width: 0;
+      background: #fff;
+      border: 1px solid var(--admin-modal-stroke);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0;
+    }
+
+    .admin-test-card__title {
+      margin: 0;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.35;
+      letter-spacing: 0;
+      color: var(--admin-modal-card-title);
+    }
+
+    .admin-test-card__desc {
+      margin: 8px 0 0;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--admin-modal-body);
+    }
+
+    .admin-test-card__preview {
+      margin-top: 16px;
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 0;
+    }
+
+    .admin-mini-card {
+      background: #fff;
+      border: 1px solid var(--admin-modal-stroke);
+      border-radius: 8px;
+      padding: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.45;
+      letter-spacing: 0;
+      color: var(--admin-modal-card-title);
+    }
+
+    .admin-mini-card .msg-var {
+      font-weight: 700;
+      color: var(--admin-var-blue);
+    }
+
+    /* Erro: só os 2 primeiros cards de cliente real — fictícios mantêm .msg-var azul */
+    .admin-modal-backdrop[data-vpd-scenario="erro"]
+      [data-step-panel="2"]
+      .admin-test-cards-wrap
+      > .admin-test-card:nth-child(-n + 2)
+      .admin-mini-card
+      .msg-var {
+      color: #e02222;
+    }
+
+    .admin-test-card__actions {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .admin-test-card__hint {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--admin-modal-body);
+      display: none;
+    }
+
+    .admin-test-card.is-sent .admin-test-card__hint {
+      display: block;
+    }
+
+    .admin-test-card__form {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .admin-test-card__form label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--admin-modal-card-title);
+    }
+
+    .admin-test-card__form input,
+    .admin-test-card__form select {
+      width: 100%;
+      height: 38px;
+      padding: 0 10px;
+      border: 1px solid var(--admin-modal-stroke);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+    }
+
+    /* —— .admin-btn-enviar-teste —— */
+    button.admin-btn-enviar-teste {
+      width: 100%;
+      margin: 0;
+      border: none;
+      border-radius: 4px;
+      padding: 8px;
+      gap: 4px;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 1.25;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      background: transparent;
+      color: var(--admin-btn-disabled-fg);
+      box-shadow: inset 0 0 0 2px var(--admin-btn-disabled-stroke);
+      transition: background 0.15s, box-shadow 0.15s, color 0.15s;
+    }
+
+    button.admin-btn-enviar-teste .admin-btn-enviar-teste__icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    button.admin-btn-enviar-teste:disabled,
+    button.admin-btn-enviar-teste.is-cooldown {
+      cursor: not-allowed;
+      background: transparent;
+      color: var(--admin-btn-disabled-fg);
+      box-shadow: inset 0 0 0 2px var(--admin-btn-disabled-stroke);
+    }
+
+    button.admin-btn-enviar-teste:not(:disabled):not(.is-cooldown) {
+      background: var(--admin-btn-enabled-bg);
+      color: var(--admin-primary);
+      box-shadow:
+        inset 0 0 0 2px var(--admin-primary),
+        0 2px 4px var(--admin-primary-shadow);
+    }
+
+    button.admin-btn-enviar-teste:not(:disabled):not(.is-cooldown):hover {
+      background: var(--admin-btn-enabled-bg-hover);
+    }
+
+    button.admin-btn-enviar-teste:not(:disabled):not(.is-cooldown):focus-visible {
+      outline: none;
+      background: var(--admin-btn-enabled-bg);
+      box-shadow:
+        inset 0 0 0 3px var(--admin-primary),
+        0 2px 4px var(--admin-primary-shadow);
+    }
+
+    button.admin-btn-enviar-teste:not(:disabled):not(.is-cooldown):active {
+      box-shadow:
+        inset 0 0 0 2px var(--admin-primary),
+        inset 0 2px 4px var(--admin-primary-pressed);
+    }
+
+    .admin-step-panel {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .admin-step-panel.is-active {
+      display: flex;
+    }

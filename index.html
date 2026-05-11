@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Subida de Base — Disparo de Teste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/prototype-theme.css" />
+    <link rel="stylesheet" href="assets/css/whitelabel-tokens.css" />
+    <link rel="stylesheet" href="assets/css/admin.css" />
+    <link rel="stylesheet" href="assets/css/modal-validacao-pre-disparo.css" />
+  </head>
+  <body class="gb-prototype">
+    <!-- Header -->
+    <div class="header navbar navbar-fixed-top" role="banner">
+      <div class="header-inner">
+        <ul class="nav navbar-nav pull-right">
+          <li class="dropdown user">
+            <a class="dropdown-toggle" href="#" aria-expanded="false" aria-haspopup="true">
+              <span class="avatar" aria-hidden="true"></span>
+              <span class="username">Ana Silva (administrador)</span>
+              <b class="caret"></b>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse" id="page-sidebar">
+          <div class="page-sidebar-toolbar">
+            <button type="button" class="sidebar-toggler" aria-controls="page-sidebar" aria-expanded="true" title="Recolher menu">
+              <span class="sidebar-toggler-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Alternar menu lateral</span>
+            </button>
+          </div>
+          <div class="slimScrollDiv">
+            <ul class="page-sidebar-menu">
+              <li class="start open active">
+                <a href="#" class="nav-toggle" aria-expanded="true" aria-haspopup="true">
+                  <i class="menu-item-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                  </i>
+                  <span class="title" data-sidebar-label>Subida de base</span>
+                  <span class="submenu-arrow menu-item-has-arrow" aria-hidden="true"></span>
+                </a>
+                <ul class="sub-menu">
+                  <li class="active">
+                    <a href="index.html">
+                      <span class="sub-menu-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+                        </svg>
+                      </span>
+                      Lista de bases
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal -->
+      <div id="segmentation-list-content">
+        <div class="page-content">
+          <h1 class="page-title">Subida de Base</h1>
+          <nav class="page-breadcrumb" aria-label="Navegação em trilha">
+            <a href="#" class="page-breadcrumb__home" aria-label="Início">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+            </a>
+            <span class="sep">›</span>
+            <span class="is-current" aria-current="page">Subida de Base</span>
+          </nav>
+
+                    <div class="titleandsub">
+
+          <h2>Criar nova base de disparo</h2>
+
+          <p class="jornada-page-subtitle">
+            Faça uma ação ou envie mensagens avulsas para SMS e WhatsApp.
+          </p>
+
+          </div>
+
+        <!-- CARDS DE AÇOES -->
+          
+<div class="cards-wrapper">
+<div class="carddenovaacao"> 
+    <img src="assets/css/icons/discount.svg" class="icon-card" alt="Ícone de ação">
+    
+    <div class="textcontentcard"> 
+        <h3 class="contentcarddenovaacao">Ação de campanha</h3> 
+        <p class="contentcarddenovaacao">Envie uma base para configurar ações como AMGM, Aniversário, Reativação... (com geração de bônus)</p>
+      <a class="admin-btn-acaodecard">Nova ação</a>
+    </div>
+</div>
+
+<div class="carddenovaacao"> 
+    <img src="assets/css/icons/ecommerce.svg" class="icon-card" alt="Ícone de ação">
+    
+    <div class="textcontentcard"> 
+        <h3 class="contentcarddenovaacao">E-commerce</h3> 
+        <p class="contentcarddenovaacao">Subida de base de E-commerce para cadastro de pedidos e integração operacional, utilizada pelo time de implantação.</p> 
+   <a class="admin-btn-acaodecard">Novo e-coomerce</a>
+    </div>
+</div>
+
+<div class="carddenovaacao"> 
+    <img src="assets/css/icons/whatsapp.svg" class="icon-card" alt="Ícone de ação">
+    
+    <div class="textcontentcard"> 
+        <h3 class="contentcarddenovaacao">Disparo por WhatsApp</h3> 
+        <p class="contentcarddenovaacao">Envie uma base para realizar disparos únicos de mensagens no canal WhatsApp (sem geração de bônus).</p> 
+   <a class="admin-btn-acaodecard">Novo disparo de Whatsapp</a>
+    </div>
+</div>
+
+<div class="carddenovaacao"> 
+    <img src="assets/css/icons/sms.svg" class="icon-card" alt="Ícone de ação">
+    
+    <div class="textcontentcard"> 
+        <h3 class="contentcarddenovaacao">Disparo por SMS</h3> 
+        <p class="contentcarddenovaacao">Envie uma base para realizar disparos únicos de mensagens pelo canal SMS (sem geração de bônus).</p> 
+   <a class="admin-btn-acaodecard">Novo disparo SMS</a>
+    </div>
+</div>
+</div>
+          <!-- Conteudo da tabela -->
+
+          <div class="titleandsub">
+
+          <h2>Gerenciar bases cadastradas</h2>
+
+          <p class="jornada-page-subtitle">
+            Gerencie suas bases cadastradas e acompanhe o status de cada disparo.
+          </p>
+
+          </div>
+          
+
+          <section class="content-panel" aria-labelledby="dt-list-panel-title">
+            <header class="content-panel__head">
+              <h2 id="dt-list-panel-title" class="content-panel__title">
+                <span class="content-panel__title-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+                  </svg>
+                </span>
+                Lista de bases
+              </h2>
+            </header>
+
+            <div class="content-panel__toolbar">
+              <div class="content-panel__toolbar-left">
+                <div class="content-panel__field content-panel__field--page-size">
+                  <select id="page-size" name="pageSize" aria-label="Itens por página">
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                  </select>
+                  <span class="content-panel__suffix">Resultados por página</span>
+                </div>
+                <div class="content-panel__field">
+                  <label for="busca-base">Buscar</label>
+                  <input id="busca-base" type="search" name="q" placeholder="Todos" autocomplete="off" />
+                </div>
+              </div>
+              <div class="content-panel__toolbar-right">
+                Verifique o estado atual da lista:
+                <a href="#">atualizar agora</a>
+              </div>
+            </div>
+
+            <div class="content-panel__body">
+              <div class="portlet box grey">
+                <div class="portlet-body">
+                  <div id="segmentationDataTable_wrapper">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <table id="segmentationDataTable" class="data-table">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Nome</th>
+                              <th>Validade</th>
+                              <th>Autor</th>
+                              <th>Criação</th>
+                              <th>Tipo</th>
+                              <th>
+                                <span class="th-with-icon">
+                                  Status
+                                  <button type="button" class="btn-icon-kebab" title="Atualizar lista" aria-label="Atualizar status">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                      <path d="M17.65 6.35A7.958 7.958 0 0012 4V1L7 6l5 5V7c1.76 0 3.36.71 4.54 1.85l1.11-1.5zM19.73 7.27L18.62 8.78A5.991 5.991 0 0112 18v-3l-5 5 5 5v-2.09c3.45-.49 6-3.39 6-6.91 0-1.1-.25-2.14-.68-3.09l-1.59-1.65z"/>
+                                    </svg>
+                                  </button>
+                                </span>
+                              </th>
+                              <th>Ação</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="even">
+                              <td>1272</td>
+                              <td><a href="#">Errata de bônus - Vivara</a></td>
+                              <td>15/02/2026 — 20/05/2026</td>
+                              <td>Ana Silva</td>
+                              <td>15/02/2026</td>
+                              <td>WhatsApp Avulso</td>
+                              <td><span class="status-pill status-pill--orange">Processando</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar" href="#">Acompanhar</a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Cancelar disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="odd">
+                              <td>1273</td>
+                              <td><a href="#">RTV_Adidas_SMS_20-05-25</a></td>
+                              <td>15/02/2026 — 20/05/2026</td>
+                              <td>Lucas Alves</td>
+                              <td>20/03/2026</td>
+                              <td>Ação - SMS</td>
+                              <td><span class="status-pill status-pill--yellow">Conclusão parcial</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar" href="#">Acessar dados</a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="even">
+                              <td>1274</td>
+                              <td><a href="#">AMGM_Aramis_Whats_20-05-25</a></td>
+                              <td>15/02/2026 — 20/05/2026</td>
+                              <td>Edson Figueiredo</td>
+                              <td>25/04/2026</td>
+                              <td>Ação - WhatsApp</td>
+                              <td><span class="status-pill status-pill--green">Sucesso</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar" href="#">Acessar dados</a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <!-- LINHA-ALVO DO FLUXO: status "Pronto para disparo" + opção "Enviar mensagem de teste" no kebab -->
+                            <tr class="odd">
+                              <td>1275</td>
+                              <td><a href="#">Subida Arezzo - Exemplo de sucesso</a></td>
+                              <td>N/A</td>
+                              <td>Renato Oliveira</td>
+                              <td>30/05/2026</td>
+                              <td>WhatsApp Avulso</td>
+                              <td><span class="status-pill status-pill--blue">Pronto para disparo</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar admin-btn-iniciar-disparo" href="#" id="btn-iniciar-disparo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px;vertical-align:middle">
+                                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                    </svg>
+                                    Iniciar disparo
+                                  </a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem" id="btn-menu-enviar-teste">
+                                        Enviar mensagem de teste
+                                      </button>
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Cancelar disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="even">
+                              <td>1276</td>
+                              <td><a href="#">Errata de bônus - Subida Arezzo - Exemplo de erro</a></td>
+                              <td>N/A</td>
+                              <td>Renato Oliveira</td>
+                              <td>30/05/2026</td>
+                              <td>WhatsApp Avulso</td>
+                              <td><span class="status-pill status-pill--blue">Pronto para disparo</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar admin-btn-iniciar-disparo" href="#" id="btn-iniciar-disparo-erro">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:4px;vertical-align:middle">
+                                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                    </svg>
+                                    Iniciar disparo
+                                  </a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem" id="btn-menu-enviar-teste-erro">
+                                        Enviar mensagem de teste
+                                      </button>
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Cancelar disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="odd">
+                              <td>1277</td>
+                              <td><a href="#">Disparo simples - Água de coco</a></td>
+                              <td>N/A</td>
+                              <td>João Sena</td>
+                              <td>05/06/2026</td>
+                              <td>SMS Avulso</td>
+                              <td><span class="status-pill status-pill--red">Erro na base</span></td>
+                              <td>
+                                <div class="data-table__action-row">
+                                  <a class="btn-acompanhar" href="#">Acessar dados</a>
+                                  <div class="action-dropdown">
+                                    <button type="button" class="action-dropdown-toggle" onclick="toggleActionMenu(this)" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">
+                                      <span class="action-dropdown-toggle__icon" aria-hidden="true">
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                        <span class="action-dropdown-toggle__dot"></span>
+                                      </span>
+                                    </button>
+                                    <div class="action-dropdown-menu" role="menu" aria-hidden="true">
+                                      <button type="button" class="action-dropdown-menu__item" role="menuitem">Detalhes do disparo</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-panel__footer jornada-table-footer" role="navigation" aria-label="Paginação">
+              <div class="jornada-pagination-info">A mostrar 1–6 de 114 resultados</div>
+              <ul class="jornada-pagination">
+                <li><span aria-disabled="true">«</span></li>
+                <li><span aria-disabled="true">‹</span></li>
+                <li class="is-active"><span aria-current="page">1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">›</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Validação pré-disparo (embed index — caminho feliz) -->
+<div class="admin-modal-backdrop" id="vpd-backdrop" aria-hidden="true" style="display: none;">
+    <div class="admin-modal-shell" role="dialog" aria-modal="true" aria-labelledby="vpd-modalTitle">
+      <header class="admin-modal-header">
+        <h2 class="admin-modal-header__title" id="vpd-modalTitle">Validação pré-disparo</h2>
+        <button type="button" class="admin-modal-header__close" aria-label="Fechar" id="vpd-btnClose">×</button>
+      </header>
+
+      <div class="admin-modal-body">
+        <nav class="admin-stepper" aria-label="Etapas">
+          <div class="admin-stepper__item is-active" data-step-dot="1">
+            <span class="admin-stepper__badge" data-badge="1">1</span>
+            <span class="admin-stepper__label">Introdução</span>
+          </div>
+          <div class="admin-stepper__item" data-step-dot="2">
+            <span class="admin-stepper__badge" data-badge="2">2</span>
+            <span class="admin-stepper__label">Teste de mensagens</span>
+          </div>
+          <div class="admin-stepper__item" data-step-dot="3">
+            <span class="admin-stepper__badge" data-badge="3">3</span>
+            <span class="admin-stepper__label">Disparo</span>
+          </div>
+        </nav>
+
+        <!-- Step 1 -->
+        <section class="admin-step-panel is-active" data-step-panel="1" aria-label="Introdução">
+          <div class="admin-modal-hero">
+            <div class="admin-modal-hero__illu" aria-hidden="true">
+              <img class="admin-modal-hero__illu-img" src="assets/css/icons/svg-test-default.svg" width="194" height="165" alt="" />
+            </div>
+            <div class="admin-modal-hero__text">
+              <h3 class="admin-modal-hero__title">O cliente não vai receber nada agora</h3>
+              <p class="admin-modal-hero__desc">
+                Você envia a mensagem real da campanha para o seu celular (ou de quem você escolher) usando dados de um
+                cliente real da base. Assim, você confere se as variáveis estão corretas antes de disparar para todos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="admin-step-panel" data-step-panel="2" aria-label="Teste de mensagens">
+          <div class="admin-field">
+            <label class="admin-field__label" for="vpd-phoneTest">Número de celular para teste *</label>
+            <input
+              class="admin-field__input"
+              id="vpd-phoneTest"
+              type="tel"
+              inputmode="tel"
+              placeholder="(XX) 90000-0000"
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="admin-test-cards-wrap">
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Primeiro cliente da base</h4>
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var">João</span>! Obrigado por comprar na <span class="msg-var">Arezzo Barueri</span>.
+                  Você ganhou <span class="msg-var">R$20,00</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Último cliente da base</h4>
+
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var">Maria</span>! Obrigado por comprar na <span class="msg-var">Arezzo Morumbi</span>.
+                  Você ganhou <span class="msg-var">R$15,00</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Teste com dados fictícios</h4>
+              <p class="admin-test-card__desc">Edite os campos abaixo para criar um teste com dados personalizados.</p>
+              <div class="admin-test-card__form">
+                <div>
+                  <label for="vpd-fictStore">Loja</label>
+                  <select id="vpd-fictStore">
+                    <option value="">Selecione</option>
+                    <option value="arezzo-barueri">Arezzo Barueri</option>
+                    <option value="arezzo-morumbi">Arezzo Morumbi</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="vpd-fictBonus">Valor do bônus</label>
+                  <input id="vpd-fictBonus" type="text" placeholder="R$ 0,00" />
+                </div>
+                <div>
+                  <label for="vpd-fictName">Nome</label>
+                  <input id="vpd-fictName" type="text" placeholder="Ex: João da Silva" />
+                </div>
+              </div>
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var" data-fict-name>Nome</span>! Obrigado por comprar na <span class="msg-var" data-fict-store>Loja</span>.
+                  Você ganhou <span class="msg-var" data-fict-bonus>Valor</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="admin-step-panel" data-step-panel="3" aria-label="Disparo">
+          <div class="admin-modal-hero">
+            <div class="admin-modal-hero__illu admin-modal-hero__illu--step3" aria-hidden="true">
+              <img class="admin-modal-hero__illu-img admin-modal-hero__illu-img--step3-feliz" src="assets/css/icons/svg-test-success.svg" width="181" height="165" alt="" />
+              <img class="admin-modal-hero__illu-img admin-modal-hero__illu-img--step3-erro" src="assets/css/icons/svg-test-Warning.svg" width="181" height="165" alt="" />
+            </div>
+            <div class="admin-modal-hero__text">
+              <h3 class="admin-modal-hero__title" id="vpd-step3Title">Teste finalizado!</h3>
+              <p class="admin-modal-hero__desc" id="vpd-step3Desc">
+                Agora você já pode fazer o disparo da sua base com mais segurança.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="admin-modal-footer" id="vpd-modalFooter" data-step="1">
+        <div class="admin-modal-footer__group footer--step1">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Cancelar</button>
+          <button type="button" class="admin-btn admin-btn--primary" data-action="next">Avançar</button>
+        </div>
+        <div class="admin-modal-footer__group footer--step2">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Cancelar</button>
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="back">Voltar</button>
+          <button type="button" class="admin-btn admin-btn--primary" data-action="next">Avançar</button>
+        </div>
+        <div class="admin-modal-footer__group footer--step3">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Fechar sem disparar</button>
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="back">Voltar</button>
+          <button type="button" class="admin-btn admin-btn--success" data-action="confirm">Iniciar disparo</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+    <!-- ETAPA 3.3: Modal de gatilho (Variação 1 + Variação 2) -->
+
+    <!-- Backdrop compartilhado por todos os modais de feedback -->
+    <div id="jornada-feedback-backdrop" class="modal-backdrop fade" aria-hidden="true"></div>
+
+    <!-- Modal de Gatilho — VARIAÇÃO 1 (neutra, sem erro detectado) -->
+    <div
+      id="dt-modal-gatilho-v1"
+      class="modal fade jornada-feedback-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="dt-modal-gatilho-v1-titulo"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="jornada-feedback-modal__inner">
+            <div class="jornada-feedback-modal__icon jornada-feedback-modal__icon--warning" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+              </svg>
+            </div>
+            <h2 id="dt-modal-gatilho-v1-titulo" class="jornada-feedback-modal__title">Que tal fazer um teste?</h2>
+            <p class="jornada-feedback-modal__text">
+              Deseja fazer um teste de envio para confirmar se todas as variáveis estão corretas?
+            </p>
+            <div class="jornada-feedback-modal__actions admin-modal-actions--center">
+              <button type="button" class="btn btn-default" id="btn-v1-enviar-sem-testar">Enviar sem testar</button>
+              <button type="button" class="btn btn-primary" id="btn-v1-fazer-teste">Fazer teste de mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Gatilho — VARIAÇÃO 2 (com erro detectado na base) -->
+    <div
+      id="dt-modal-gatilho-v2"
+      class="modal fade jornada-feedback-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="dt-modal-gatilho-v2-titulo"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="jornada-feedback-modal__inner">
+            <div class="jornada-feedback-modal__icon jornada-feedback-modal__icon--error" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z" />
+              </svg>
+            </div>
+            <h2 id="dt-modal-gatilho-v2-titulo" class="jornada-feedback-modal__title">Parece que sua base apresentou um erro!</h2>
+            <p class="jornada-feedback-modal__text">
+              Deseja fazer um teste de envio para revisar se todas as variáveis estão corretas?
+            </p>
+            <div class="jornada-feedback-modal__actions admin-modal-actions--center">
+              <button type="button" class="btn btn-default" id="btn-v2-enviar-sem-testar">Enviar sem testar</button>
+              <button type="button" class="btn btn-primary" id="btn-v2-fazer-teste">Fazer teste de mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETAPA 3.4-3.5: Modal grande "Enviar mensagem de teste" -->
+    <!-- Estados A-G controlados via data-dt-state no body do modal -->
+
+    <div
+      id="dt-modal-grande"
+      class="modal fade admin-modal-grande"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="dt-modal-grande-titulo"
+      aria-hidden="true"
+      data-dt-state="A"
+    >
+      <div class="modal-dialog admin-modal-grande__dialog" role="document">
+        <div class="modal-content admin-modal-grande__content">
+          <!-- Header com título e × -->
+          <div class="admin-modal-grande__header">
+            <h2 id="dt-modal-grande-titulo" class="admin-modal-grande__title">Enviar mensagem de teste</h2>
+            <button type="button" class="admin-modal-grande__close" aria-label="Fechar" data-dt-close-modal-grande>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Body com input + banner aviso + 2 cards -->
+          <div class="admin-modal-grande__body">
+            <!-- Campo de telefone -->
+            <div class="form-group has-feedback admin-form-field">
+              <label for="dt-input-telefone" class="admin-form-field__label">
+                Número de celular para teste <span class="required">*</span>
+              </label>
+              <input
+                type="tel"
+                id="dt-input-telefone"
+                class="form-control admin-form-field__input"
+                placeholder="(XX) 90000-0000"
+                autocomplete="off"
+              />
+              <p class="admin-form-field__error" id="dt-input-telefone-erro" hidden>
+                Insira um número de celular válido
+              </p>
+            </div>
+
+            <!-- Banner "É só um teste!" -->
+            <div class="admin-banner-aviso">
+              <span class="admin-banner-aviso__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 21h6v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+                </svg>
+              </span>
+              <div class="admin-banner-aviso__content">
+                <h3 class="admin-banner-aviso__title">É só um teste!</h3>
+                <p class="admin-banner-aviso__text">A mensagem não será enviada ao cliente. Apenas será enviada como teste para o número inserido aqui.</p>
+              </div>
+            </div>
+<div class="compiladodecardsdebase">
+            <!-- Card 1: Primeiro cliente da base -->
+            <article class="admin-card-cliente" data-dt-card="primeiro" data-dt-card-state="loaded">
+              <h3 class="admin-card-cliente__title">Primeiro cliente da base</h3>
+
+              <!-- Estado: Banner de erro de carregamento (Estado F) -->
+              <div class="admin-banner-erro-card" data-dt-only="card-loading-error">
+                <span class="admin-banner-erro-card__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                  </svg>
+                </span>
+                <div class="admin-banner-erro-card__content">
+                  <h4 class="admin-banner-erro-card__title">Atenção!</h4>
+                  <p class="admin-banner-erro-card__text">
+                    Não conseguimos carregar este cliente da base. Você pode testar com o outro cliente disponível enquanto isso.
+                  </p>
+                </div>
+                <button type="button" class="btn btn-default admin-banner-erro-card__action" data-dt-card-retry="primeiro">
+                  Tentar novamente
+                </button>
+              </div>
+
+              <!-- Conteúdo do card (Estados A, B, C, D, E, G) -->
+              <div class="admin-card-cliente__content" data-dt-only="card-content">
+                <div class="admin-card-cliente__grid">
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">ID</span>
+                    <span class="admin-card-cliente__field-value">#1234</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Nome do cliente</span>
+                    <span class="admin-card-cliente__field-value" data-dt-error-field>João da Silva</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Celular</span>
+                    <span class="admin-card-cliente__field-value">+55 (11) 94754-4945</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Loja</span>
+                    <span class="admin-card-cliente__field-value">Arezzo Barueri</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Total de bônus</span>
+                    <span class="admin-card-cliente__field-value" data-dt-error-field>R$20,00</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Total de utilizado</span>
+                    <span class="admin-card-cliente__field-value" data-dt-error-field>R$0,00</span>
+                  </div>
+                </div>
+
+                <!-- Footer do card: muda conforme estado -->
+                <div class="admin-card-cliente__footer">
+                  <!-- Estado D: feedback de envio com countdown -->
+                  <div class="admin-feedback-envio" data-dt-only="card-sent">
+                    <span class="admin-feedback-envio__label">
+                      <span class="admin-feedback-envio__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                      </span>
+                      SMS enviado!
+                    </span>
+                    <button type="button" class="btn btn-primary admin-feedback-envio__resend" disabled data-dt-card-resend="primeiro">
+                      Reenviar (<span data-dt-countdown="primeiro">60</span>s)
+                    </button>
+                  </div>
+
+                  <!-- Estado G: feedback de falha ao enviar -->
+                  <div class="admin-feedback-erro-envio" data-dt-only="card-send-error">
+                    <div class="admin-feedback-erro-envio__msg">
+                      <strong class="admin-feedback-erro-envio__title">Falha ao enviar!</strong>
+                      <span class="admin-feedback-erro-envio__text">Tivemos um problema para enviar o teste.</span>
+                    </div>
+                    <button type="button" class="btn admin-btn-retry-danger" data-dt-card-retry-send="primeiro">
+                      Tentar novamente
+                    </button>
+                  </div>
+
+                  <!-- Estados A, B, C, E: botão Testar mensagem -->
+                  <div class="admin-card-cliente__action" data-dt-only="card-default-action">
+                    <button type="button" class="btn btn-primary admin-btn-testar" disabled data-dt-card-test="primeiro">
+                      Testar mensagem
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Divisor entre cards -->
+            <hr class="admin-modal-grande__divider" />
+
+            <!-- Card 2: Último cliente da base -->
+            <article class="admin-card-cliente" data-dt-card="ultimo" data-dt-card-state="loaded">
+              <h3 class="admin-card-cliente__title">Último cliente da base</h3>
+
+              <div class="admin-card-cliente__content">
+                <div class="admin-card-cliente__grid">
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">ID</span>
+                    <span class="admin-card-cliente__field-value">#5678</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Nome do cliente</span>
+                    <span class="admin-card-cliente__field-value">Maria Souza</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Celular</span>
+                    <span class="admin-card-cliente__field-value">+55 (11) 98123-4567</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Loja</span>
+                    <span class="admin-card-cliente__field-value">Arezzo Morumbi</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Total de bônus</span>
+                    <span class="admin-card-cliente__field-value">R$50,00</span>
+                  </div>
+                  <div class="admin-card-cliente__field">
+                    <span class="admin-card-cliente__field-label">Total de utilizado</span>
+                    <span class="admin-card-cliente__field-value">R$15,00</span>
+                  </div>
+                </div>
+
+                <div class="admin-card-cliente__footer">
+                  <div class="admin-card-cliente__action">
+                    <button type="button" class="btn btn-primary admin-btn-testar" disabled data-dt-card-test="ultimo">
+                      Testar mensagem
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <!-- TODO Etapa 3.6: Modal de erro genérico -->
+
+    <script>
+      // Toggle do kebab menu (copiado do exemplo-crud.html do DS)
+      // Inline aqui porque é padrão do DS — não específico deste projeto
+      function toggleActionMenu(btn) {
+        var wrap = btn.closest(".action-dropdown");
+        if (!wrap) return;
+        var menu = wrap.querySelector(".action-dropdown-menu");
+        if (!menu) return;
+        var willOpen = !menu.classList.contains("show");
+        document.querySelectorAll(".action-dropdown-menu.show").forEach(function (m) {
+          if (m !== menu) {
+            m.classList.remove("show");
+            m.setAttribute("aria-hidden", "true");
+            var w = m.closest(".action-dropdown");
+            var b = w && w.querySelector(".action-dropdown-toggle");
+            if (b) b.setAttribute("aria-expanded", "false");
+          }
+        });
+        if (willOpen) {
+          menu.classList.add("show");
+          menu.setAttribute("aria-hidden", "false");
+          btn.setAttribute("aria-expanded", "true");
+        } else {
+          menu.classList.remove("show");
+          menu.setAttribute("aria-hidden", "true");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      }
+      document.addEventListener("click", function (e) {
+        var inDropdown = e.target.closest(".action-dropdown");
+        if (inDropdown) return;
+        document.querySelectorAll(".action-dropdown-menu.show").forEach(function (menu) {
+          menu.classList.remove("show");
+          menu.setAttribute("aria-hidden", "true");
+          var w = menu.closest(".action-dropdown");
+          var b = w && w.querySelector(".action-dropdown-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        document.querySelectorAll(".action-dropdown-menu.show").forEach(function (menu) {
+          menu.classList.remove("show");
+          menu.setAttribute("aria-hidden", "true");
+          var w = menu.closest(".action-dropdown");
+          var b = w && w.querySelector(".action-dropdown-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
+    <script src="assets/js/prototype-sidebar.js"></script>
+    <script src="assets/js/prototype-submenu.js"></script>
+    <script src="assets/js/jornada-feedback-modal.js"></script>
+    <script src="assets/js/modal-validacao-pre-disparo-embed.js"></script>
+    <script src="assets/js/admin.js"></script>
+  </body>
+</html>

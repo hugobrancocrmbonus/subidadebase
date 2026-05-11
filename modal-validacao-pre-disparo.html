@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modal — Validação pré-disparo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/modal-validacao-pre-disparo.css" />
+</head>
+<body class="modal-validacao-pre-disparo-standalone">
+  <div class="admin-modal-backdrop" id="backdrop" aria-hidden="false" data-vpd-scenario="feliz">
+    <div class="admin-modal-shell" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="admin-modal-header">
+        <h2 class="admin-modal-header__title" id="modalTitle">Validação pré-disparo</h2>
+        <button type="button" class="admin-modal-header__close" aria-label="Fechar" id="btnClose">×</button>
+      </header>
+
+      <div class="admin-modal-body">
+        <nav class="admin-stepper" aria-label="Etapas">
+          <div class="admin-stepper__item is-active" data-step-dot="1">
+            <span class="admin-stepper__badge" data-badge="1">1</span>
+            <span class="admin-stepper__label">Introdução</span>
+          </div>
+          <div class="admin-stepper__item" data-step-dot="2">
+            <span class="admin-stepper__badge" data-badge="2">2</span>
+            <span class="admin-stepper__label">Teste de mensagens</span>
+          </div>
+          <div class="admin-stepper__item" data-step-dot="3">
+            <span class="admin-stepper__badge" data-badge="3">3</span>
+            <span class="admin-stepper__label">Disparo</span>
+          </div>
+        </nav>
+
+        <!-- Step 1 -->
+        <section class="admin-step-panel is-active" data-step-panel="1" aria-label="Introdução">
+          <div class="admin-modal-hero">
+            <div class="admin-modal-hero__illu" aria-hidden="true">
+              <img class="admin-modal-hero__illu-img" src="assets/css/icons/svg-test-default.svg" width="194" height="165" alt="" />
+            </div>
+            <div class="admin-modal-hero__text">
+              <h3 class="admin-modal-hero__title">O cliente não vai receber nada agora</h3>
+              <p class="admin-modal-hero__desc">
+                Você envia a mensagem real da campanha para o seu celular (ou de quem você escolher) usando dados de um
+                cliente real da base. Assim, você confere se as variáveis estão corretas antes de disparar para todos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="admin-step-panel" data-step-panel="2" aria-label="Teste de mensagens">
+          <div class="admin-field">
+            <label class="admin-field__label" for="phoneTest">Número de celular para teste *</label>
+            <input
+              class="admin-field__input"
+              id="phoneTest"
+              type="tel"
+              inputmode="tel"
+              placeholder="(XX) 90000-0000"
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="admin-test-cards-wrap">
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Primeiro cliente da base</h4>
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var">João</span>! Obrigado por comprar na <span class="msg-var">Arezzo Barueri</span>.
+                  Você ganhou <span class="msg-var">R$20,00</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Último cliente da base</h4>
+
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var">Maria</span>! Obrigado por comprar na <span class="msg-var">Arezzo Morumbi</span>.
+                  Você ganhou <span class="msg-var">R$15,00</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="admin-test-card" data-card>
+              <h4 class="admin-test-card__title">Teste com dados fictícios</h4>
+              <p class="admin-test-card__desc">Edite os campos abaixo para criar um teste com dados personalizados.</p>
+              <div class="admin-test-card__form">
+                <div>
+                  <label for="fictStore">Loja</label>
+                  <select id="fictStore">
+                    <option value="">Selecione</option>
+                    <option value="arezzo-barueri">Arezzo Barueri</option>
+                    <option value="arezzo-morumbi">Arezzo Morumbi</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="fictBonus">Valor do bônus</label>
+                  <input id="fictBonus" type="text" placeholder="R$ 0,00" />
+                </div>
+                <div>
+                  <label for="fictName">Nome</label>
+                  <input id="fictName" type="text" placeholder="Ex: João da Silva" />
+                </div>
+              </div>
+              <div class="admin-test-card__preview">
+                <div class="admin-mini-card">
+                  Olá, <span class="msg-var" data-fict-name>Nome</span>! Obrigado por comprar na <span class="msg-var" data-fict-store>Loja</span>.
+                  Você ganhou <span class="msg-var" data-fict-bonus>Valor</span> para sua próxima compra!
+                </div>
+                <div class="admin-test-card__actions">
+                  <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
+                    <svg class="admin-btn-enviar-teste__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11.5L21 4L14 20L11 12L3 11.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="admin-btn-enviar-teste__label">Digite um número para testar</span>
+                  </button>
+                  <p class="admin-test-card__hint">Confira o SMS no celular informado</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="admin-step-panel" data-step-panel="3" aria-label="Disparo">
+          <div class="admin-modal-hero">
+            <div class="admin-modal-hero__illu admin-modal-hero__illu--step3" aria-hidden="true">
+              <img class="admin-modal-hero__illu-img admin-modal-hero__illu-img--step3-feliz" src="assets/css/icons/svg-test-success.svg" width="181" height="165" alt="" />
+              <img class="admin-modal-hero__illu-img admin-modal-hero__illu-img--step3-erro" src="assets/css/icons/svg-test-Warning.svg" width="181" height="165" alt="" />
+            </div>
+            <div class="admin-modal-hero__text">
+              <h3 class="admin-modal-hero__title" id="step3Title">Teste finalizado!</h3>
+              <p class="admin-modal-hero__desc" id="step3Desc">
+                Agora você já pode fazer o disparo da sua base com mais segurança.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="admin-modal-footer" id="modalFooter" data-step="1">
+        <div class="admin-modal-footer__group footer--step1">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Cancelar</button>
+          <button type="button" class="admin-btn admin-btn--primary" data-action="next">Avançar</button>
+        </div>
+        <div class="admin-modal-footer__group footer--step2">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Cancelar</button>
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="back">Voltar</button>
+          <button type="button" class="admin-btn admin-btn--primary" data-action="next">Avançar</button>
+        </div>
+        <div class="admin-modal-footer__group footer--step3">
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="cancel">Fechar sem disparar</button>
+          <button type="button" class="admin-btn admin-btn--secondary" data-action="back">Voltar</button>
+          <button type="button" class="admin-btn admin-btn--success" data-action="confirm">Iniciar disparo</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      /** Contagem pós-envio: 60s conforme spec; altere para testar mais rápido. */
+      const COOLDOWN_SEC = 60;
+
+      let step = 1;
+      const footer = document.getElementById("modalFooter");
+      const panels = document.querySelectorAll("[data-step-panel]");
+      const dots = document.querySelectorAll("[data-step-dot]");
+      const phoneInput = document.getElementById("phoneTest");
+      const sendButtons = document.querySelectorAll("[data-send-test]");
+
+      function labelEl(btn) {
+        return btn.querySelector(".admin-btn-enviar-teste__label");
+      }
+
+      function setStep(n) {
+        step = Math.max(1, Math.min(3, n));
+        footer.dataset.step = String(step);
+
+        panels.forEach((p) => {
+          p.classList.toggle("is-active", Number(p.getAttribute("data-step-panel")) === step);
+        });
+
+        dots.forEach((d, i) => {
+          const idx = i + 1;
+          d.classList.remove("is-done", "is-active");
+          if (idx < step) d.classList.add("is-done");
+          if (idx === step) d.classList.add("is-active");
+          const badge = d.querySelector("[data-badge]");
+          if (badge) {
+            if (idx < step) {
+              badge.textContent = "✓";
+              badge.setAttribute("aria-label", "Concluído");
+            } else {
+              badge.textContent = String(idx);
+              badge.removeAttribute("aria-label");
+            }
+          }
+        });
+
+        syncSendButtons();
+      }
+
+      function formatVpdPhoneDigits(raw) {
+        const d = String(raw).replace(/\D/g, "").slice(0, 11);
+        if (!d.length) return "";
+        if (d.length <= 2) return "(" + d;
+        const area = d.slice(0, 2);
+        const s = d.slice(2);
+        const head = "(" + area + ") ";
+        if (!s.length) return "(" + area + ")";
+        if (s.charAt(0) === "9") {
+          if (s.length <= 5) return head + s;
+          return head + s.slice(0, 5) + "-" + s.slice(5, 9);
+        }
+        if (s.length <= 4) return head + s;
+        return head + s.slice(0, 4) + "-" + s.slice(4, 8);
+      }
+
+      function caretAfterNthDigit(str, n) {
+        if (n <= 0) return 0;
+        let c = 0;
+        for (let i = 0; i < str.length; i++) {
+          if (/\d/.test(str[i])) {
+            c++;
+            if (c === n) return i + 1;
+          }
+        }
+        return str.length;
+      }
+
+      function onPhoneInput() {
+        if (!phoneInput) return;
+        const el = phoneInput;
+        const before = el.value;
+        const sel = typeof el.selectionStart === "number" ? el.selectionStart : before.length;
+        const digitsBefore = (before.slice(0, sel).match(/\d/g) || []).length;
+        const next = formatVpdPhoneDigits(before);
+        el.value = next;
+        const totalD = next.replace(/\D/g, "").length;
+        const target = Math.min(digitsBefore, totalD);
+        if (document.activeElement === el) {
+          const pos = caretAfterNthDigit(next, target);
+          el.setSelectionRange(pos, pos);
+        }
+        syncSendButtons();
+      }
+
+      function phoneFilled() {
+        return (phoneInput.value || "").replace(/\D/g, "").length >= 10;
+      }
+
+      function syncSendButtons() {
+        const ok = phoneFilled();
+        sendButtons.forEach((btn) => {
+          if (btn.classList.contains("is-cooldown")) return;
+          const span = labelEl(btn);
+          btn.disabled = !ok;
+          if (span) span.textContent = ok ? "Enviar teste" : "Digite um número para testar";
+        });
+      }
+
+      phoneInput.addEventListener("input", onPhoneInput);
+
+      sendButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (btn.disabled || btn.classList.contains("is-cooldown")) return;
+          const card = btn.closest("[data-card]");
+          if (card) card.classList.add("is-sent");
+
+          btn.classList.add("is-cooldown");
+          btn.disabled = true;
+          let left = COOLDOWN_SEC;
+          const span = labelEl(btn);
+
+          const tick = () => {
+            if (span) span.textContent = left > 0 ? `Reenviar ${left}s` : "Reenviar";
+            if (left <= 0) {
+              btn.classList.remove("is-cooldown");
+              syncSendButtons();
+              return;
+            }
+            left -= 1;
+            setTimeout(tick, 1000);
+          };
+          tick();
+        });
+      });
+
+      document.getElementById("modalFooter").addEventListener("click", (e) => {
+        const t = e.target;
+        if (!(t instanceof HTMLElement)) return;
+        const action = t.getAttribute("data-action");
+        if (!action) return;
+        if (action === "cancel") {
+          document.getElementById("backdrop").style.display = "none";
+        } else if (action === "next") setStep(step + 1);
+        else if (action === "back") setStep(step - 1);
+        else if (action === "confirm") {
+          alert("Disparo iniciado (simulação).");
+          setStep(1);
+        }
+      });
+
+      document.getElementById("btnClose").addEventListener("click", () => {
+        document.getElementById("backdrop").style.display = "none";
+      });
+
+      const fictName = document.getElementById("fictName");
+      const fictStore = document.getElementById("fictStore");
+      const fictBonus = document.getElementById("fictBonus");
+      const elN = document.querySelector("[data-fict-name]");
+      const elS = document.querySelector("[data-fict-store]");
+      const elB = document.querySelector("[data-fict-bonus]");
+      function updFict() {
+        if (elN) elN.textContent = fictName.value.trim() || "Nome";
+        if (elS) {
+          const opt = fictStore.options[fictStore.selectedIndex];
+          elS.textContent = opt && opt.value !== "" ? opt.text : "Loja";
+        }
+        if (elB) elB.textContent = fictBonus.value.trim() || "Valor";
+      }
+      [fictName, fictStore, fictBonus].forEach((x) => x && x.addEventListener("input", updFict));
+      [fictName, fictStore, fictBonus].forEach((x) => x && x.addEventListener("change", updFict));
+
+      setStep(1);
+    })();
+  </script>
+</body>
+</html>
