@@ -304,14 +304,37 @@
   var elN = root.querySelector("[data-fict-name]");
   var elS = root.querySelector("[data-fict-store]");
   var elB = root.querySelector("[data-fict-bonus]");
+
+  function bonusInnerFromRaw(raw) {
+    if (!raw) return "";
+    return String(raw).replace(/^\s*R\$\s*/i, "").trim();
+  }
+
+  function bonusPreviewFromInput(raw) {
+    var inner = bonusInnerFromRaw(raw);
+    if (!inner) return "R$ 0,00";
+    return "R$ " + inner;
+  }
+
   function updFict() {
     if (elN && fictName) elN.textContent = fictName.value.trim() || "Nome";
     if (elS && fictStore) {
       var opt = fictStore.options[fictStore.selectedIndex];
       elS.textContent = opt && opt.value !== "" ? opt.text : "Loja";
     }
-    if (elB && fictBonus) elB.textContent = fictBonus.value.trim() || "Valor";
+    if (elB && fictBonus) elB.textContent = bonusPreviewFromInput(fictBonus.value);
   }
+
+  if (fictBonus) {
+    fictBonus.addEventListener("paste", function (e) {
+      var t = e.clipboardData && e.clipboardData.getData("text");
+      if (t == null) return;
+      e.preventDefault();
+      fictBonus.value = bonusInnerFromRaw(t);
+      updFict();
+    });
+  }
+
   [fictName, fictStore, fictBonus].forEach(function (x) {
     if (x) x.addEventListener("input", updFict);
   });

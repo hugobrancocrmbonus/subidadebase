@@ -535,7 +535,16 @@
                 </div>
                 <div>
                   <label for="vpd-fictBonus">Valor do bônus</label>
-                  <input id="vpd-fictBonus" type="text" placeholder="R$ 0,00" />
+                  <div class="admin-input-currency">
+                    <span class="admin-input-currency__prefix">R$</span>
+                    <input
+                      id="vpd-fictBonus"
+                      type="text"
+                      inputmode="decimal"
+                      placeholder="0,00"
+                      autocomplete="off"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label for="vpd-fictName">Nome</label>
@@ -545,7 +554,7 @@
               <div class="admin-test-card__preview">
                 <div class="admin-mini-card">
                   Olá, <span class="msg-var" data-fict-name>Nome</span>! Obrigado por comprar na <span class="msg-var" data-fict-store>Loja</span>.
-                  Você ganhou <span class="msg-var" data-fict-bonus>Valor</span> para sua próxima compra!
+                  Você ganhou <span class="msg-var" data-fict-bonus>R$ 0,00</span> para sua próxima compra!
                 </div>
                 <div class="admin-test-card__actions">
                   <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>

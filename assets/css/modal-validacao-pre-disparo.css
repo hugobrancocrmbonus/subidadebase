@@ -10,6 +10,7 @@
       --admin-primary-pressed: rgba(77, 144, 254, 0.2);
       --admin-var-blue: #4d90fe;
       --admin-success: #34a853;
+      --admin-danger: #e02222;
       --admin-cards-tint: #ececec;
       --admin-btn-disabled-stroke: #eaeaea;
       --admin-btn-disabled-fg: #9ca3af;
@@ -219,6 +220,27 @@
 
     .admin-btn--success:focus-visible {
       outline-color: var(--admin-success);
+    }
+
+    /* Step 3 — cenário erro: só no modal, "Iniciar disparo" vermelho (CTA da tabela permanece verde) */
+    .admin-modal-backdrop[data-vpd-scenario="erro"]
+      .admin-modal-footer[data-step="3"]
+      .admin-btn--success[data-action="confirm"] {
+      background: var(--admin-danger);
+      color: #fff;
+    }
+
+    .admin-modal-backdrop[data-vpd-scenario="erro"]
+      .admin-modal-footer[data-step="3"]
+      .admin-btn--success[data-action="confirm"]:hover {
+      filter: brightness(0.92);
+    }
+
+    .admin-modal-backdrop[data-vpd-scenario="erro"]
+      .admin-modal-footer[data-step="3"]
+      .admin-btn--success[data-action="confirm"]:focus-visible {
+      outline: 2px solid rgba(224, 34, 34, 0.45);
+      outline-offset: 2px;
     }
 
     /* —— Stepper —— */
@@ -516,6 +538,47 @@
       border-radius: 6px;
       font-family: inherit;
       font-size: 13px;
+    }
+
+    .admin-test-card__form .admin-input-currency {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      border: 1px solid var(--admin-modal-stroke);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .admin-test-card__form .admin-input-currency:focus-within {
+      outline: 2px solid var(--admin-primary);
+      outline-offset: 2px;
+    }
+
+    .admin-test-card__form .admin-input-currency__prefix {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--admin-modal-card-title);
+      border-right: 1px solid var(--admin-modal-stroke);
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .admin-test-card__form .admin-input-currency input {
+      flex: 1 1 auto;
+      min-width: 0;
+      width: auto;
+      height: 38px;
+      border: none;
+      border-radius: 0;
+      padding: 0 10px;
+    }
+
+    .admin-test-card__form .admin-input-currency input:focus {
+      outline: none;
     }
 
     /* —— .admin-btn-enviar-teste —— */

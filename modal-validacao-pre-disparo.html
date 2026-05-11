@@ -127,7 +127,16 @@
                 </div>
                 <div>
                   <label for="fictBonus">Valor do bônus</label>
-                  <input id="fictBonus" type="text" placeholder="R$ 0,00" />
+                  <div class="admin-input-currency">
+                    <span class="admin-input-currency__prefix">R$</span>
+                    <input
+                      id="fictBonus"
+                      type="text"
+                      inputmode="decimal"
+                      placeholder="0,00"
+                      autocomplete="off"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label for="fictName">Nome</label>
@@ -137,7 +146,7 @@
               <div class="admin-test-card__preview">
                 <div class="admin-mini-card">
                   Olá, <span class="msg-var" data-fict-name>Nome</span>! Obrigado por comprar na <span class="msg-var" data-fict-store>Loja</span>.
-                  Você ganhou <span class="msg-var" data-fict-bonus>Valor</span> para sua próxima compra!
+                  Você ganhou <span class="msg-var" data-fict-bonus>R$ 0,00</span> para sua próxima compra!
                 </div>
                 <div class="admin-test-card__actions">
                   <button type="button" class="admin-btn-enviar-teste" disabled data-send-test>
@@ -349,14 +358,37 @@
       const elN = document.querySelector("[data-fict-name]");
       const elS = document.querySelector("[data-fict-store]");
       const elB = document.querySelector("[data-fict-bonus]");
+
+      function bonusInnerFromRaw(raw) {
+        if (!raw) return "";
+        return String(raw).replace(/^\s*R\$\s*/i, "").trim();
+      }
+
+      function bonusPreviewFromInput(raw) {
+        const inner = bonusInnerFromRaw(raw);
+        if (!inner) return "R$ 0,00";
+        return "R$ " + inner;
+      }
+
       function updFict() {
         if (elN) elN.textContent = fictName.value.trim() || "Nome";
         if (elS) {
           const opt = fictStore.options[fictStore.selectedIndex];
           elS.textContent = opt && opt.value !== "" ? opt.text : "Loja";
         }
-        if (elB) elB.textContent = fictBonus.value.trim() || "Valor";
+        if (elB) elB.textContent = bonusPreviewFromInput(fictBonus.value);
       }
+
+      if (fictBonus) {
+        fictBonus.addEventListener("paste", (e) => {
+          const t = e.clipboardData && e.clipboardData.getData("text");
+          if (t == null) return;
+          e.preventDefault();
+          fictBonus.value = bonusInnerFromRaw(t);
+          updFict();
+        });
+      }
+
       [fictName, fictStore, fictBonus].forEach((x) => x && x.addEventListener("input", updFict));
       [fictName, fictStore, fictBonus].forEach((x) => x && x.addEventListener("change", updFict));
 
