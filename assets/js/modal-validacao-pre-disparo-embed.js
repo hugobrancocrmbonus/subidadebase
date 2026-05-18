@@ -264,21 +264,54 @@
     btnClose.addEventListener("click", closeVpdModal);
   }
 
-  var openBtn = document.getElementById("btn-iniciar-disparo");
-  if (openBtn) {
-    openBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      openVpdModal("feliz");
+  function openTriggerFeedbackModal(scenario) {
+    if (window.closeJornadaFeedbackModals) {
+      window.closeJornadaFeedbackModals();
+    }
+    var selector = scenario === "erro" ? "#dt-modal-gatilho-v2" : "#dt-modal-gatilho-v1";
+    if (window.openJornadaFeedbackModal) {
+      window.openJornadaFeedbackModal(document.querySelector(selector));
+    }
+  }
+
+  function closeTriggerFeedbackModal() {
+    if (window.closeJornadaFeedbackModals) {
+      window.closeJornadaFeedbackModals();
+    }
+  }
+
+  function bindTriggerModalButtons() {
+    var triggerButtons = document.querySelectorAll(".admin-btn-iniciar-disparo");
+    triggerButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var isErro = btn.id && btn.id.indexOf("erro") !== -1;
+        openTriggerFeedbackModal(isErro ? "erro" : "feliz");
+      });
+    });
+
+    ["v1", "v2"].forEach(function (variant) {
+      var cancelBtn = document.getElementById("btn-" + variant + "-enviar-sem-testar");
+      var testBtn = document.getElementById("btn-" + variant + "-fazer-teste");
+      var scenario = variant === "v2" ? "erro" : "feliz";
+
+      if (cancelBtn) {
+        cancelBtn.addEventListener("click", function () {
+          closeTriggerFeedbackModal();
+          alert("Disparo simulado sem teste.");
+        });
+      }
+
+      if (testBtn) {
+        testBtn.addEventListener("click", function () {
+          closeTriggerFeedbackModal();
+          openVpdModal(scenario);
+        });
+      }
     });
   }
 
-  var openBtnErro = document.getElementById("btn-iniciar-disparo-erro");
-  if (openBtnErro) {
-    openBtnErro.addEventListener("click", function (e) {
-      e.preventDefault();
-      openVpdModal("erro");
-    });
-  }
+  bindTriggerModalButtons();
 
   var menuEnviarTeste = document.getElementById("btn-menu-enviar-teste");
   if (menuEnviarTeste) {

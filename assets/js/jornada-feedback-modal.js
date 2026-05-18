@@ -63,4 +63,7 @@
     var any = document.querySelector(".jornada-feedback-modal.in");
     if (any) closeAll();
   });
+
+  window.openJornadaFeedbackModal = openModal;
+  window.closeJornadaFeedbackModals = closeAll;
 })();
