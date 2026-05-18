@@ -32,10 +32,20 @@
   function syncNextButtonState() {
     var nextButton = footer.querySelector(".footer--step" + step + " [data-action=\"next\"]");
     if (!nextButton) return;
-    if (step === 2) {
-      nextButton.disabled = !hasSentTest();
+    var disabled = step === 2 && !hasSentTest();
+    nextButton.classList.toggle("is-disabled", disabled);
+    if (disabled) {
+      nextButton.setAttribute("aria-disabled", "true");
+      nextButton.setAttribute("data-disabled", "true");
+      nextButton.style.opacity = "0.5";
+      nextButton.style.cursor = "not-allowed";
+      nextButton.removeAttribute("disabled");
     } else {
-      nextButton.disabled = false;
+      nextButton.removeAttribute("aria-disabled");
+      nextButton.removeAttribute("data-disabled");
+      nextButton.style.opacity = "";
+      nextButton.style.cursor = "";
+      nextButton.removeAttribute("disabled");
     }
   }
 
