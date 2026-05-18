@@ -25,6 +25,20 @@
     return btn.querySelector(".admin-btn-enviar-teste__label");
   }
 
+  function hasSentTest() {
+    return !!root.querySelector("[data-card].is-sent");
+  }
+
+  function syncNextButtonState() {
+    var nextButton = footer.querySelector(".footer--step" + step + " [data-action=\"next\"]");
+    if (!nextButton) return;
+    if (step === 2) {
+      nextButton.disabled = !hasSentTest();
+    } else {
+      nextButton.disabled = false;
+    }
+  }
+
   function isVpdOpen() {
     return backdrop.getAttribute("aria-hidden") === "false";
   }
@@ -153,6 +167,7 @@
     if (step === 3) applyStep3Copy();
 
     syncSendButtons();
+    syncNextButtonState();
   }
 
   function formatVpdPhoneDigits(raw) {
@@ -246,6 +261,7 @@
       if (btn.disabled || btn.classList.contains("is-cooldown")) return;
       var card = btn.closest("[data-card]");
       if (card) card.classList.add("is-sent");
+      syncNextButtonState();
 
       btn.classList.add("is-cooldown");
       btn.disabled = true;
@@ -274,6 +290,10 @@
     if (action === "cancel") {
       closeVpdModal();
     } else if (action === "next") {
+      if (step === 2 && !hasSentTest()) {
+        alert("Faça pelo menos um teste antes de avançar para o próximo passo.");
+        return;
+      }
       setStep(step + 1);
     } else if (action === "back") {
       setStep(step - 1);
