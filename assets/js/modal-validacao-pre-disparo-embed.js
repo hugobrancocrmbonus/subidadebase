@@ -204,17 +204,42 @@
     return (phoneInput.value || "").replace(/\D/g, "").length >= 10;
   }
 
+  function fictFieldsFilled() {
+    if (!fictStore || !fictName || !fictBonus) return false;
+    var bonus = bonusInnerFromRaw(fictBonus.value);
+    return fictStore.value !== "" && fictName.value.trim() !== "" && bonus !== "";
+  }
+
+  function isFictCard(btn) {
+    var card = btn.closest("[data-card]");
+    return !!(card && card.querySelector("[data-fict-name]"));
+  }
+
   function syncSendButtons() {
-    var ok = phoneFilled();
+    var phoneOk = phoneFilled();
     sendButtons.forEach(function (btn) {
       if (btn.classList.contains("is-cooldown")) return;
+      var isFict = isFictCard(btn);
+      var ok = phoneOk && (!isFict || fictFieldsFilled());
       var span = labelEl(btn);
       btn.disabled = !ok;
-      if (span) span.textContent = ok ? "Enviar teste" : "Digite um número para testar";
+      if (!phoneOk) {
+        if (span) span.textContent = "Digite um número para testar";
+      } else if (isFict && !fictFieldsFilled()) {
+        if (span) span.textContent = "Preencha todos os dados para testar";
+      } else {
+        if (span) span.textContent = "Enviar teste";
+      }
     });
   }
 
   if (phoneInput) phoneInput.addEventListener("input", onPhoneInput);
+  [fictName, fictStore, fictBonus].forEach(function (x) {
+    if (x) x.addEventListener("input", syncSendButtons);
+  });
+  [fictName, fictStore, fictBonus].forEach(function (x) {
+    if (x) x.addEventListener("change", syncSendButtons);
+  });
 
   sendButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
