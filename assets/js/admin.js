@@ -143,50 +143,9 @@ function dtAplicarEstadoModalGrande(estado) {
 
 /* ========================================================================== */
 /* DISPARO DE TESTE — ações dentro dos modais de gatilho V1 e V2              */
-/* (Origem: Disparo de Teste — Abril/2026)                                    */
+/* Legacy handlers removed: apenas o modal de pré-disparo e o modal de steps */
+/* são suportados neste protótipo.                                           */
 /* ========================================================================== */
-
-(function () {
-  "use strict";
-
-  // V1
-  var btnV1FazerTeste = document.getElementById("btn-v1-fazer-teste");
-  if (btnV1FazerTeste) {
-    btnV1FazerTeste.addEventListener("click", function () {
-      console.log("[Disparo de Teste] V1 → Fazer teste de mensagem");
-      dtFecharModalFeedback("dt-modal-gatilho-v1");
-      dtAbrirModalGrande("A");
-    });
-  }
-
-  var btnV1EnviarSemTestar = document.getElementById("btn-v1-enviar-sem-testar");
-  if (btnV1EnviarSemTestar) {
-    btnV1EnviarSemTestar.addEventListener("click", function () {
-      console.log("[Disparo de Teste] V1 → Enviar sem testar");
-      dtFecharModalFeedback("dt-modal-gatilho-v1");
-      alert("Disparo confirmado (simulação). No fluxo real, o sistema dispararia para a base inteira.");
-    });
-  }
-
-  // V2
-  var btnV2FazerTeste = document.getElementById("btn-v2-fazer-teste");
-  if (btnV2FazerTeste) {
-    btnV2FazerTeste.addEventListener("click", function () {
-      console.log("[Disparo de Teste] V2 → Fazer teste de mensagem");
-      dtFecharModalFeedback("dt-modal-gatilho-v2");
-      dtAbrirModalGrande("A");
-    });
-  }
-
-  var btnV2EnviarSemTestar = document.getElementById("btn-v2-enviar-sem-testar");
-  if (btnV2EnviarSemTestar) {
-    btnV2EnviarSemTestar.addEventListener("click", function () {
-      console.log("[Disparo de Teste] V2 → Enviar sem testar");
-      dtFecharModalFeedback("dt-modal-gatilho-v2");
-      alert("Disparo confirmado (simulação). No fluxo real, o sistema dispararia para a base inteira.");
-    });
-  }
-})();
 
 /* ========================================================================== */
 /* DISPARO DE TESTE — Modal grande: fechar (× ou Esc)                         */
