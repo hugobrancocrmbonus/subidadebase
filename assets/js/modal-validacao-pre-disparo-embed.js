@@ -319,11 +319,11 @@
     btnClose.addEventListener("click", closeVpdModal);
   }
 
-  function openTriggerFeedbackModal(scenario) {
+  function openTriggerFeedbackModal() {
     if (window.closeJornadaFeedbackModals) {
       window.closeJornadaFeedbackModals();
     }
-    var selector = scenario === "erro" ? "#dt-modal-gatilho-v2" : "#dt-modal-gatilho-v1";
+    var selector = "#dt-modal-gatilho-v1";
     if (window.openJornadaFeedbackModal) {
       window.openJornadaFeedbackModal(document.querySelector(selector));
     }
